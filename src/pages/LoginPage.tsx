@@ -1,7 +1,47 @@
+import { useAuth } from '../hooks/useAuth';
+import { useForm } from '../hooks/useForm';
+
 export const LoginPage = () => {
+    const { onEmailPasswordSignUp } = useAuth();
+    const {
+        onInputChange,
+        formState: { email, password, displayName },
+    } = useForm<{ email: string; password: string; displayName: string }>({
+        email: '',
+        password: '',
+        displayName: '',
+    });
+
+    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log('onSubmit', { email, password, displayName });
+        onEmailPasswordSignUp(email, password, displayName);
+    };
+
     return (
         <>
-            <form className="flex flex-col justify-center mx-auto max-w-sm h-[calc(100vh-4rem)]">
+            <form
+                className="flex flex-col justify-center mx-auto max-w-sm h-[calc(100vh-4rem)]"
+                onSubmit={onSubmit}
+            >
+                <div className="mb-5">
+                    <label
+                        htmlFor="username"
+                        className="block mb-2 font-medium text-gray-900 text-sm dark:text-white"
+                    >
+                        Your username
+                    </label>
+                    <input
+                        type="text"
+                        id="displayName"
+                        name="displayName"
+                        value={displayName}
+                        onChange={onInputChange}
+                        className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
+                        placeholder="Username"
+                        required
+                    />
+                </div>
                 <div className="mb-5">
                     <label
                         htmlFor="email"
@@ -12,6 +52,9 @@ export const LoginPage = () => {
                     <input
                         type="email"
                         id="email"
+                        name="email"
+                        value={email}
+                        onChange={onInputChange}
                         className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
                         placeholder="name@email.com"
                         required
@@ -27,7 +70,11 @@ export const LoginPage = () => {
                     <input
                         type="password"
                         id="password"
+                        name="password"
+                        value={password}
+                        onChange={onInputChange}
                         className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
+                        placeholder="••••••••"
                         required
                     />
                 </div>
