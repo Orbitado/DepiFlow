@@ -1,15 +1,9 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+# Initial message.
+echo "🎉 Making magic in your code! 🪄✨"
+echo "🔍 Running formatting and style analysis before commit..."
 
-# Mensaje bonito inicial
-echo "🎉 ¡Haciendo magia en tu código! 🪄✨"
-echo "🔍 Ejecutando formateo y análisis de estilo antes del commit..."
-
-# Ejecutar scripts necesarios
+# Scripts
 npx lint-staged
 
-# Otro ejemplo: puedes ejecutar npm scripts específicos
-# npm run test
-
-# Mensaje de éxito
-echo "✅ Todo listo. ¡Tu código está limpio y brillante! 🚀"
+# End message
+echo "✅ All set. Your code is clean and shiny! 🚀"
