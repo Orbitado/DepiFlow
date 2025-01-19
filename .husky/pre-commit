@@ -1,0 +1,9 @@
+# Initial message.
+echo "🎉 Making magic in your code! 🪄✨"
+echo "🔍 Running formatting and style analysis before commit..."
+
+# Scripts
+npx lint-staged
+
+# End message
+echo "✅ All set. Your code is clean and shiny! 🚀"
