@@ -1,7 +1,7 @@
 export const LoginPage = () => {
     return (
         <>
-            <form className="mx-auto max-w-sm">
+            <form className="flex flex-col justify-center mx-auto max-w-sm h-[calc(100vh-4rem)]">
                 <div className="mb-5">
                     <label
                         htmlFor="email"
@@ -13,7 +13,7 @@ export const LoginPage = () => {
                         type="email"
                         id="email"
                         className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
-                        placeholder="name@flowbite.com"
+                        placeholder="name@email.com"
                         required
                     />
                 </div>
