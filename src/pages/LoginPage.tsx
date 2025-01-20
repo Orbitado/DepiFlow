@@ -1,23 +1,40 @@
 import { useAuth } from '../hooks/useAuth';
 import { useForm } from '../hooks/useForm';
+import { FormInputs } from '../types/types';
+import { authService } from '../services/authService';
 
 export const LoginPage = () => {
     const { onEmailPasswordSignUp } = useAuth();
     const {
         onInputChange,
         formState: { email, password, displayName },
-    } = useForm<{ email: string; password: string; displayName: string }>({
+    } = useForm<FormInputs>({
         email: '',
         password: '',
         displayName: '',
     });
 
-    const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log('onSubmit', { email, password, displayName });
-        onEmailPasswordSignUp(email, password, displayName);
-    };
 
+        try {
+            if (email && password && displayName) {
+                const result = await authService.registerUser(
+                    email,
+                    password,
+                    displayName,
+                    onEmailPasswordSignUp
+                );
+                if (result.success) {
+                    console.log('Usuario registrado con éxito');
+                }
+            } else {
+                console.error('Todos los campos son obligatorios');
+            }
+        } catch (error) {
+            console.error('Error al registrar el usuario:', error);
+        }
+    };
     return (
         <>
             <form
