@@ -13,6 +13,7 @@ const googleProvider = new GoogleAuthProvider();
 export const signInWithGoogle = async (): Promise<SignInResult> => {
     try {
         const result = await signInWithPopup(FirebaseAuth, googleProvider);
+        console.log(result);
         if (!result || !result.user) {
             throw new Error('Failed to retrieve user information.');
         }

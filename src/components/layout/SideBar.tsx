@@ -4,6 +4,7 @@ import {
     HiArrowSmLeft,
     HiArrowSmRight,
     HiChartPie,
+    HiHome,
     HiShoppingBag,
     HiUser,
     HiViewBoards,
@@ -11,8 +12,13 @@ import {
 
 function SideBarLayout() {
     return (
-        <Sidebar aria-label="Sidebar with content separator example" className="flex flex-1">
+        <Sidebar aria-label="Sidebar with content separator example">
             <Sidebar.Items>
+                <Sidebar.ItemGroup className="">
+                    <Sidebar.Item href="#" icon={HiHome}>
+                        DepiFlow
+                    </Sidebar.Item>
+                </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup>
                     <Sidebar.Item href="#" icon={HiChartPie}>
                         Panel de Control
