@@ -1,4 +1,4 @@
-import { FirebaseAuth } from './config';
+import { FirebaseAuth } from './firebaseConfig';
 import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,

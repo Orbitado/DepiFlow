@@ -2,7 +2,7 @@ import {
     loginWithEmailAndPassword,
     registerWithEmailAndPassword,
     signInWithGoogle,
-} from '@/services/firebase/provider';
+} from '@/services/firebase/firebaseAuth';
 import { login, logout, checkingCredentials } from './slices/authSlice';
 import { AppDispatch } from './store';
 
