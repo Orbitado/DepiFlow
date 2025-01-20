@@ -3,8 +3,8 @@ import {
     checkingEmailPasswordSignUp,
     checkingGoogleSignIn,
     startLoginWithEmailAndPassword,
-} from '../utils/store/thunks';
-import { AppDispatch } from '../utils/store/store';
+} from '../utils/redux/thunks';
+import { AppDispatch } from '../utils/redux/store';
 
 export const useAuth = () => {
     const dispatch = useDispatch<AppDispatch>();
