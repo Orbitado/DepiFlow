@@ -6,7 +6,7 @@ import {
     updateProfile,
     signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { SignInResult } from '../../types/types';
+import { SignInResult } from '@/types';
 
 const googleProvider = new GoogleAuthProvider();
 

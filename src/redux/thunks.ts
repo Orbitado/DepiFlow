@@ -2,8 +2,8 @@ import {
     loginWithEmailAndPassword,
     registerWithEmailAndPassword,
     signInWithGoogle,
-} from '../firebase/provider';
-import { login, logout, checkingCredentials } from './auth/authSlice';
+} from '@/services/firebase/provider';
+import { login, logout, checkingCredentials } from './slices/authSlice';
 import { AppDispatch } from './store';
 
 export const checkingAuthentication = () => {
