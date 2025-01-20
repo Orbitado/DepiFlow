@@ -52,13 +52,13 @@ export const startLoginWithEmailAndPassword = (email: string, password: string) 
     return async (dispatch: AppDispatch) => {
         dispatch(checkingCredentials());
 
-        const { ok, photoURL, uid, errorMessage } = await loginWithEmailAndPassword(
+        const { ok, photoURL, uid, displayName, errorMessage } = await loginWithEmailAndPassword(
             email,
             password
         );
 
         if (ok) {
-            dispatch(login({ ok, photoURL, uid, errorMessage }));
+            dispatch(login({ ok, displayName, email, photoURL, uid, errorMessage }));
         } else {
             dispatch(logout({ ok, photoURL, uid, errorMessage }));
         }

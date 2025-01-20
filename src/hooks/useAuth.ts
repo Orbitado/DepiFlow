@@ -21,7 +21,7 @@ export const useAuth = () => {
         dispatch(checkingEmailPasswordSignUp(email, password, displayName));
     };
 
-    const onEmailPasswordSignIn = (email: string, password: string) => {
+    const onEmailPasswordSignIn = async (email: string, password: string) => {
         dispatch(startLoginWithEmailAndPassword(email, password));
     };
 
