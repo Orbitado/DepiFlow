@@ -1,16 +1,13 @@
 import { LoginPage } from '@/pages/Auth/LoginPage';
 import { Flowbite } from 'flowbite-react';
-import NavBarLayout from '@/components/layout/NavBar';
-import BreadCrumbLayout from './components/layout/Breadcrumb';
-import SideBarLayout from './components/layout/SideBar';
+import Layout from '@/components/layout/Layout';
 
 function App() {
     return (
         <Flowbite>
-            <NavBarLayout />
-            <BreadCrumbLayout />
-            <SideBarLayout />
-            <LoginPage />
+            <Layout>
+                <LoginPage />
+            </Layout>
         </Flowbite>
     );
 }

@@ -3,10 +3,10 @@ import { DarkThemeToggle } from 'flowbite-react';
 
 function NavBarLayout() {
     return (
-        <Navbar fluid rounded>
+        <Navbar fluid className="bg-gray-100 dark:bg-gray-900">
             <Navbar.Brand href="https://flowbite-react.com">
                 <span className="font-semibold text-xl dark:text-white whitespace-nowrap self-center">
-                    Flowbite React
+                    DepiFlow
                 </span>
             </Navbar.Brand>
             <div className="flex gap-4 md:order-2">

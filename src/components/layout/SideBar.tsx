@@ -1,51 +1,38 @@
 import { Sidebar } from 'flowbite-react';
 import { BiBuoy } from 'react-icons/bi';
 import {
+    HiArrowSmLeft,
     HiArrowSmRight,
     HiChartPie,
-    HiInbox,
     HiShoppingBag,
-    HiTable,
     HiUser,
     HiViewBoards,
 } from 'react-icons/hi';
 
 function SideBarLayout() {
     return (
-        <Sidebar
-            aria-label="Sidebar with content separator example"
-            className="z-10 absolute h-full"
-        >
+        <Sidebar aria-label="Sidebar with content separator example" className="absolute h-full">
             <Sidebar.Items>
                 <Sidebar.ItemGroup>
                     <Sidebar.Item href="#" icon={HiChartPie}>
-                        Dashboard
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiViewBoards}>
-                        Kanban
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiInbox}>
-                        Inbox
+                        Panel de Control
                     </Sidebar.Item>
                     <Sidebar.Item href="#" icon={HiUser}>
-                        Users
+                        Clientes
                     </Sidebar.Item>
                     <Sidebar.Item href="#" icon={HiShoppingBag}>
-                        Products
+                        Citas
                     </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiArrowSmRight}>
-                        Sign In
-                    </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiTable}>
-                        Sign Up
+                    <Sidebar.Item href="#" icon={HiViewBoards}>
+                        Historial
                     </Sidebar.Item>
                 </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup>
-                    <Sidebar.Item href="#" icon={HiChartPie}>
-                        Upgrade to Pro
+                    <Sidebar.Item href="#" icon={HiArrowSmRight}>
+                        Sign In
                     </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={HiViewBoards}>
-                        Documentation
+                    <Sidebar.Item href="#" icon={HiArrowSmLeft}>
+                        Sign Up
                     </Sidebar.Item>
                     <Sidebar.Item href="#" icon={BiBuoy}>
                         Help
