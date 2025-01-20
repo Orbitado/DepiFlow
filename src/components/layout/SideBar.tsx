@@ -11,7 +11,7 @@ import {
 
 function SideBarLayout() {
     return (
-        <Sidebar aria-label="Sidebar with content separator example" className="absolute h-full">
+        <Sidebar aria-label="Sidebar with content separator example" className="flex flex-1">
             <Sidebar.Items>
                 <Sidebar.ItemGroup>
                     <Sidebar.Item href="#" icon={HiChartPie}>
