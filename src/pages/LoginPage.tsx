@@ -1,7 +1,7 @@
-import { useAuth } from '../hooks/useAuth';
-import { useForm } from '../hooks/useForm';
-import { FormInputs } from '../types/types';
-import { authService } from '../services/authService';
+import { useAuth } from '@/hooks/useAuth';
+import { useForm } from '@/hooks/useForm';
+import { FormInputs } from '@/types';
+import { authService } from '@/services/authService';
 
 export const LoginPage = () => {
     const { onEmailPasswordSignUp } = useAuth();
