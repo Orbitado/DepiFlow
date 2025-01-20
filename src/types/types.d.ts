@@ -6,3 +6,9 @@ export interface SignInResult {
     uid: string | null;
     errorMessage?: string;
 }
+
+export type FormInputs = {
+    displayName?: string;
+    email: string;
+    password: string;
+};
