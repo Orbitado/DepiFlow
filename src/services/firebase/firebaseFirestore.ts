@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
     doc,
     getDoc,
@@ -14,12 +15,9 @@ import { FirebaseApp } from './firebaseConfig';
 
 export const FirestoreDb = getFirestore(FirebaseApp);
 
-// deben actualizarse los tipos de los parametros, dado que son genericos.
+// deben actualizarse los tipos de los parametros, dado que son genericos y no se pueden inferir. ademas use any
 
-export const createDocument = async (
-    collectionName: string,
-    data: Record<string, <T>(value: T) => T>
-) => {
+export const createDocument = async (collectionName: string, data: Record<string, any>) => {
     console.log(`Creating document in collection: ${collectionName}`);
     const collectionRef = collection(FirestoreDb, collectionName);
     const docRef = await addDoc(collectionRef, data);
@@ -42,7 +40,7 @@ export const readDocument = async (collectionName: string, id: string) => {
 export const updateDocument = async (
     collectionName: string,
     id: string,
-    data: Record<string, <T>(value: T) => T>
+    data: Record<string, any>
 ) => {
     console.log(`Updating document with ID: ${id} in collection: ${collectionName}`);
     const docRef = doc(FirestoreDb, collectionName, id);
