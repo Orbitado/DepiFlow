@@ -1,10 +1,14 @@
-import { LoginPage } from './pages/LoginPage';
+import { LoginPage } from '@/pages/Auth/LoginPage';
+import { Flowbite } from 'flowbite-react';
+import Layout from '@/components/layout/Layout';
 
 function App() {
     return (
-        <>
-            <LoginPage />
-        </>
+        <Flowbite>
+            <Layout>
+                <LoginPage />
+            </Layout>
+        </Flowbite>
     );
 }
 
