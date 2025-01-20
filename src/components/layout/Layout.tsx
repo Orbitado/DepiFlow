@@ -6,7 +6,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <>
             <NavBarLayout />
             <SideBarLayout />
-            <main className="bg-gray-100 dark:bg-gray-800">{children}</main>
+            {children}
         </>
     );
 }

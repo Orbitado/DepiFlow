@@ -1,12 +1,12 @@
-import { LoginPage } from '@/pages/Auth/LoginPage';
 import { Flowbite } from 'flowbite-react';
 import Layout from '@/components/layout/Layout';
+import { AppRouter } from './router/AppRouter';
 
 function App() {
     return (
         <Flowbite>
             <Layout>
-                <LoginPage />
+                <AppRouter />
             </Layout>
         </Flowbite>
     );
