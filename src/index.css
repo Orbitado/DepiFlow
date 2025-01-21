@@ -9,6 +9,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

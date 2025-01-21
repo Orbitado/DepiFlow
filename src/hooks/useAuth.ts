@@ -3,8 +3,9 @@ import {
     checkingEmailPasswordSignUp,
     checkingGoogleSignIn,
     startLoginWithEmailAndPassword,
+    startLogout,
 } from '@/redux/thunks';
-import { AppDispatch } from '@/redux/store';
+import { AppDispatch } from '@/redux/store/store';
 
 export const useAuth = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -25,9 +26,14 @@ export const useAuth = () => {
         dispatch(startLoginWithEmailAndPassword(email, password));
     };
 
+    const onSignOut = () => {
+        dispatch(startLogout());
+    };
+
     return {
         onGoogleSignIn,
         onEmailPasswordSignUp,
         onEmailPasswordSignIn,
+        onSignOut,
     };
 };

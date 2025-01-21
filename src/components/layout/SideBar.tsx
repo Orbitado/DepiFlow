@@ -1,16 +1,11 @@
+import { useAuth } from '@/hooks/useAuth';
 import { Sidebar } from 'flowbite-react';
 import { BiBuoy } from 'react-icons/bi';
-import {
-    HiArrowSmLeft,
-    HiArrowSmRight,
-    HiChartPie,
-    HiShoppingBag,
-    HiUser,
-    HiViewBoards,
-} from 'react-icons/hi';
+import { HiArrowSmRight, HiChartPie, HiShoppingBag, HiUser, HiViewBoards } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 function SideBarLayout() {
+    const { onSignOut } = useAuth();
     return (
         <Sidebar aria-label="Sidebar with content separator example" className="flex flex-1">
             <Sidebar.Items>
@@ -35,17 +30,10 @@ function SideBarLayout() {
                     </Link>
                 </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup>
-                    <Link to={'/auth/login'}>
-                        <Sidebar.Item href="#" icon={HiArrowSmRight}>
-                            Sign In
-                        </Sidebar.Item>
-                    </Link>
-                    <Sidebar.Item href="#" icon={HiArrowSmLeft}>
+                    <Sidebar.Item onClick={onSignOut} icon={HiArrowSmRight}>
                         Sign Out
                     </Sidebar.Item>
-                    <Sidebar.Item href="#" icon={BiBuoy}>
-                        Help
-                    </Sidebar.Item>
+                    <Sidebar.Item icon={BiBuoy}>Help</Sidebar.Item>
                 </Sidebar.ItemGroup>
             </Sidebar.Items>
         </Sidebar>

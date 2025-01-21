@@ -20,4 +20,19 @@ export const authService = {
             throw new Error(error as string);
         }
     },
+    async loginUser(
+        email: string,
+        password: string,
+        onEmailPasswordSignIn: (email: string, password: string) => Promise<void>
+    ) {
+        if (!email.trim() || !password.trim()) {
+            throw new Error('Todos los campos son obligatorios');
+        }
+        try {
+            await onEmailPasswordSignIn(email.trim(), password.trim());
+            return { success: true };
+        } catch (error) {
+            throw new Error(error as string);
+        }
+    },
 };
