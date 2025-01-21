@@ -7,8 +7,13 @@ import { Link } from 'react-router-dom';
 function SideBarLayout() {
     const { onSignOut } = useAuth();
     return (
-        <Sidebar aria-label="Sidebar with content separator example" className="flex flex-1">
+        <Sidebar aria-label="Sidebar with content separator example">
             <Sidebar.Items>
+                <Sidebar.ItemGroup className="">
+                    <Sidebar.Item href="#" icon={HiHome}>
+                        DepiFlow
+                    </Sidebar.Item>
+                </Sidebar.ItemGroup>
                 <Sidebar.ItemGroup>
                     <Link to={'/dashboard'}>
                         <Sidebar.Item icon={HiChartPie}>Panel de Control</Sidebar.Item>

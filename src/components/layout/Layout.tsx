@@ -5,7 +5,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         <>
             <main className="grid grid-cols-[250px_1fr] bg-gray-100 dark:bg-gray-800 min-h-screen">
                 <SideBarLayout />
-                <div className="w-full">{children}</div>
+                <div className="px-12 py-6 w-full">{children}</div>
             </main>
         </>
     );
