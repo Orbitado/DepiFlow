@@ -1,7 +1,14 @@
 import { useAuth } from '@/hooks/useAuth';
 import { Sidebar } from 'flowbite-react';
 import { BiBuoy } from 'react-icons/bi';
-import { HiArrowSmRight, HiChartPie, HiShoppingBag, HiUser, HiViewBoards } from 'react-icons/hi';
+import {
+    HiArrowSmRight,
+    HiChartPie,
+    HiHome,
+    HiShoppingBag,
+    HiUser,
+    HiViewBoards,
+} from 'react-icons/hi';
 import { Link } from 'react-router-dom';
 
 function SideBarLayout() {
