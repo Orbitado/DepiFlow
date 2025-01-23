@@ -20,7 +20,7 @@ export const ClientsPage = () => {
                                 <div className="flex items-center">Próxima cita</div>
                             </th>
                             <th scope="col" className="px-6 py-3">
-                                <span className="sr-only">Edit</span>
+                                <span className="sr-only">Editar</span>
                             </th>
                         </tr>
                     </thead>
