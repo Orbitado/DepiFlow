@@ -4,6 +4,7 @@ import { FormInputs } from '@/types';
 import { authService } from '@/services/authService';
 import { FaGoogle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 export const LoginPage = () => {
     const { onEmailPasswordSignIn, onGoogleSignIn } = useAuth();
@@ -101,14 +102,10 @@ export const LoginPage = () => {
                         Iniciar sesión
                     </button>
 
-                    <button
-                        onClick={onGoogleSignIn}
-                        type="submit"
-                        className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 dark:hover:bg-blue-700 dark:bg-blue-600 px-5 py-2.5 rounded-lg focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 w-full sm:w-auto font-medium text-center text-sm text-white focus:outline-none"
-                    >
+                    <Button onClick={onGoogleSignIn} type="submit">
                         <FaGoogle style={{ background: 'none' }} />
                         Google
-                    </button>
+                    </Button>
                 </div>
             </form>
         </>
