@@ -3,9 +3,11 @@ import { useForm } from '@/hooks/useForm';
 import { FormInputs } from '@/types';
 import { authService } from '@/services/authService';
 import { FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
     const { onEmailPasswordSignIn, onGoogleSignIn } = useAuth();
+    const routerNavigate = useNavigate();
     const {
         onInputChange,
         formState: { email, password },
@@ -22,6 +24,7 @@ export const LoginPage = () => {
                 const result = await authService.loginUser(email, password, onEmailPasswordSignIn);
                 if (result.success) {
                     console.log('inicio de sesión con éxito');
+                    routerNavigate('/');
                 }
             } else {
                 console.error('Todos los campos son obligatorios');
