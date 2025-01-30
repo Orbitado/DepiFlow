@@ -27,7 +27,7 @@ function LoginPage() {
     const emailError = form.formState.errors.email as FieldError;
     const passwordError = form.formState.errors.password as FieldError;
 
-    const onSubmit = form.handleSubmit(async ({ email, password } : FormInputType) => {
+    const onSubmit = form.handleSubmit(async ({ email, password }: FormInputType) => {
         const result = await authService.loginUser(email, password, onEmailPasswordSignIn);
 
         if (result.success) {
@@ -47,14 +47,16 @@ function LoginPage() {
                             form={form}
                             errors={emailError}
                             placeholder={'Enter your email'}
-                            type="email">
+                            type="email"
+                        >
                             Email
                         </FormInput>
                         <FormInput
                             form={form}
                             errors={passwordError}
                             placeholder={'Enter your password'}
-                            type="password">
+                            type="password"
+                        >
                             Password
                         </FormInput>
                         <Button className="mt-6 w-full" type="submit">
