@@ -2,11 +2,21 @@ import { Routes, Route } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
 import DepiFlowRouter from './DepiFlowRouter';
+import PublicRoute from './PublicRoute';
 import AuthPage from '@/pages/AuthPage';
 
 export const AppRouter = () => {
     return (
         <Routes>
+            <Route
+                path="/auth/login"
+                element={
+                    <PublicRoute>
+                        <AuthPage />
+                    </PublicRoute>
+                }
+            />
+
             <Route
                 path="/*"
                 element={
@@ -15,7 +25,6 @@ export const AppRouter = () => {
                     </ProtectedRoute>
                 }
             />
-            <Route path="/auth/login" element={<AuthPage />} />
         </Routes>
     );
 };
