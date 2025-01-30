@@ -7,17 +7,32 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { userSchema } from '@/zod/zodConfig';
 import FormInput from '@/components/common/FormInput';
 import SignInWith from '@/components/common/SignInWith';
+import { authService } from '@/services/authService';
+import { useAuth } from '@/hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
+import { FormInputType } from '@/types';
 
 function LoginPage() {
-    const form = useForm({
+    const { onEmailPasswordSignIn, onGoogleSignIn } = useAuth();
+    const routerNavigate = useNavigate();
+
+    const form = useForm<FormInputType>({
         resolver: zodResolver(userSchema),
+        defaultValues: {
+            email: '',
+            password: '',
+        },
     });
 
     const emailError = form.formState.errors.email as FieldError;
     const passwordError = form.formState.errors.password as FieldError;
 
-    const handleSubmit = form.handleSubmit((values) => {
-        console.log(values);
+    const onSubmit = form.handleSubmit(async ({ email, password } : FormInputType) => {
+        const result = await authService.loginUser(email, password, onEmailPasswordSignIn);
+
+        if (result.success) {
+            routerNavigate('/');
+        }
     });
 
     return (
@@ -27,21 +42,19 @@ function LoginPage() {
             </CardHeader>
             <CardContent>
                 <Form {...form}>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={onSubmit}>
                         <FormInput
                             form={form}
                             errors={emailError}
                             placeholder={'Enter your email'}
-                            type="email"
-                        >
+                            type="email">
                             Email
                         </FormInput>
                         <FormInput
                             form={form}
                             errors={passwordError}
                             placeholder={'Enter your password'}
-                            type="password"
-                        >
+                            type="password">
                             Password
                         </FormInput>
                         <Button className="mt-6 w-full" type="submit">
@@ -57,7 +70,9 @@ function LoginPage() {
                     <p className="text-center">Or</p>
                     <span className="bg-gray-700 w-full h-0.5"></span>
                 </div>
-                <SignInWith icon={<AtSign />}>Sign In with Google</SignInWith>
+                <SignInWith icon={<AtSign />} onClick={onGoogleSignIn}>
+                    Sign In with Google
+                </SignInWith>
             </CardFooter>
         </Card>
     );

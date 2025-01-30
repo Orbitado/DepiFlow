@@ -6,12 +6,28 @@ import {
     startLogout,
 } from '@/redux/thunks';
 import { AppDispatch } from '@/redux/store/store';
+import { useNavigate } from 'react-router-dom';
+import { useCheckAuth } from './useCheckAuth';
 
 export const useAuth = () => {
+    const { status } = useCheckAuth();
+    const routerNavigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
 
-    const onGoogleSignIn = () => {
-        dispatch(checkingGoogleSignIn());
+    const onGoogleSignIn = async () => {
+        try {
+            await dispatch(checkingGoogleSignIn());
+
+            const isAuthenticated = status === 'authenticated';
+
+            if (!isAuthenticated) {
+                throw new Error('Failed to sign in with Google.');
+            } else {
+                routerNavigate('/');
+            }
+        } catch (error) {
+            console.error('Google sign-in failed:', error);
+        }
     };
 
     const onEmailPasswordSignUp = async (

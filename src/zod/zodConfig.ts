@@ -6,6 +6,9 @@ export const userSchema = z.object({
             required_error: 'Please enter your email address.',
             invalid_type_error: 'Email must be a valid text value.',
         })
+        .min(3, {
+            message: 'Your email must be at least 3 characters long.',
+        })
         .trim()
         .toLowerCase()
         .email({
@@ -33,10 +36,6 @@ export const userSchema = z.object({
         })
         .regex(/[0-9]/, {
             message: 'Your password must include at least one number (0-9).',
-        })
-        .regex(/[\W_]/, {
-            message:
-                'Your password must include at least one special character (@, $, !, %, etc.).',
         })
         .refine((password) => !/\s/.test(password), {
             message: 'Your password cannot contain spaces.',

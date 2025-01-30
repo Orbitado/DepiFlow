@@ -1,9 +1,10 @@
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useCheckAuth } from '@/hooks/useCheckAuth';
 import Loader from '@/components/common/Loader';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { status } = useCheckAuth();
+    const routerNavigate = useNavigate();
     const isAuthenticated = status === 'authenticated';
     const isChecking = status === 'checking';
 
@@ -12,10 +13,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     }
 
     if (!isAuthenticated) {
-        return <Navigate to="/auth/login" />;
+        routerNavigate('/auth/login');
+    } else {
+        return <main>{children}</main>;
     }
-
-    return <main>{children}</main>;
 }
 
 export default ProtectedRoute;

@@ -1,4 +1,5 @@
 import { FieldError, Control } from 'react-hook-form';
+import { z } from 'zod';
 export interface SignInResult {
     ok: boolean;
     displayName: string | null;
@@ -27,3 +28,5 @@ export interface SignInWithProps {
     icon: React.ReactNode;
     onClick?: () => void;
 }
+
+type FormInputType = z.infer<typeof userSchema>;

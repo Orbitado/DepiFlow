@@ -3,7 +3,8 @@ echo "🎉 Making magic in your code! 🪄✨"
 echo "🔍 Running formatting and style analysis before commit..."
 
 # Scripts
-npx lint-staged
+npm run format
+npm run lint
 
 # End message
 echo "✅ All set. Your code is clean and shiny! 🚀"
