@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import ProtectedRoute from './ProtectedRoute';
 import DepiFlowRouter from './DepiFlowRouter';
-import LoginPage from '@/pages/LoginPage';
+import AuthPage from '@/pages/AuthPage';
 
 export const AppRouter = () => {
     return (
@@ -15,7 +15,7 @@ export const AppRouter = () => {
                     </ProtectedRoute>
                 }
             />
-            <Route path="/auth/login" element={<LoginPage />} />
+            <Route path="/auth/login" element={<AuthPage />} />
         </Routes>
     );
 };

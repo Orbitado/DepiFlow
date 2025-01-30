@@ -1,117 +1,73 @@
-import { useAuth } from '@/hooks/useAuth';
-import { useForm } from '@/hooks/useForm';
-import { FormInputs } from '@/types';
-import { authService } from '@/services/authService';
-import { FaGoogle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Button, buttonVariants } from '@/components/ui/button';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@radix-ui/react-label';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Link } from 'react-router-dom';
+import { AtSign, LogIn } from 'lucide-react';
 
 function LoginPage() {
-    const { onEmailPasswordSignIn, onGoogleSignIn } = useAuth();
-    const routerNavigate = useNavigate();
-    const {
-        onInputChange,
-        formState: { email, password },
-    } = useForm<FormInputs>({
-        email: '',
-        password: '',
-    });
-
-    const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-
-        try {
-            if (email && password) {
-                const result = await authService.loginUser(email, password, onEmailPasswordSignIn);
-                if (result.success) {
-                    console.log('inicio de sesión con éxito');
-                    routerNavigate('/');
-                }
-            } else {
-                console.error('Todos los campos son obligatorios');
-            }
-        } catch (error) {
-            console.error('Error al iniciar sesión:', error);
-        }
-    };
     return (
-        <>
-            <form
-                className="flex flex-col justify-center mx-auto max-w-sm h-[calc(100vh-4rem)]"
-                onSubmit={onSubmit}
-            >
-                <div className="mb-5"></div>
-                <div className="mb-5">
-                    <label
-                        htmlFor="email"
-                        className="block mb-2 font-medium text-gray-900 text-sm dark:text-white"
-                    >
-                        Your email
-                    </label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email}
-                        onChange={onInputChange}
-                        className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
-                        placeholder="name@email.com"
-                        required
-                    />
-                </div>
-                <div className="mb-5">
-                    <label
-                        htmlFor="password"
-                        className="block mb-2 font-medium text-gray-900 text-sm dark:text-white"
-                    >
-                        Your password
-                    </label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        value={password}
-                        onChange={onInputChange}
-                        className="block border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 p-2.5 border focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 text-sm dark:text-white dark:placeholder-gray-400"
-                        placeholder="••••••••"
-                        required
-                    />
-                </div>
-                <div className="flex items-start mb-5">
-                    <div className="flex items-center h-5">
-                        <input
-                            id="remember"
-                            type="checkbox"
-                            value=""
-                            className="border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 border rounded focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:focus:ring-offset-gray-800 dark:ring-offset-gray-800 w-4 h-4"
-                            required
-                        />
+        <Card className="mx-auto py-12 w-[350px] container">
+            <CardContent>
+                <form>
+                    <div className="items-center gap-4 grid w-full">
+                        <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="email" className="hover:cursor-pointer">
+                                <span>Email</span>
+                            </Label>
+                            <Input type="email" id="email" placeholder={'Enter your Email'} />
+                        </div>
+                        <div className="flex flex-col space-y-1.5">
+                            <Label htmlFor="password" className="hover:cursor-pointer">
+                                Password
+                            </Label>
+                            <Input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your Password"
+                            />
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <div className="flex items-center space-x-2">
+                                <Checkbox id="terms" />
+                                <label
+                                    htmlFor="terms"
+                                    className="peer-disabled:opacity-70 text-sm leading-none hover:cursor-pointer peer-disabled:cursor-not-allowed"
+                                >
+                                    Remember me
+                                </label>
+                            </div>
+                            <Link
+                                to="/forgot-password"
+                                className={`text-blue-500 text-sm ${buttonVariants({ variant: 'link' })}`}
+                            >
+                                Forgot password?
+                            </Link>
+                        </div>
                     </div>
-                    <label
-                        htmlFor="remember"
-                        className="font-medium text-gray-900 text-sm dark:text-gray-300 ms-2"
-                    >
-                        Remember me
-                    </label>
+                    <Button className="items-center mt-6 w-full">
+                        <span>Sign In</span>
+                        <LogIn />
+                    </Button>
+                </form>
+            </CardContent>
+            <CardFooter className="flex flex-col py-0">
+                <div className="flex items-center space-x-6 mt-2 mb-6 w-full">
+                    <span className="bg-gray-700 w-full h-0.5"></span>
+                    <p className="text-center">Or</p>
+                    <span className="bg-gray-700 w-full h-0.5"></span>
                 </div>
-                <div className="flex justify-around">
-                    <button
-                        type="submit"
-                        className="bg-blue-700 hover:bg-blue-800 dark:hover:bg-blue-700 dark:bg-blue-600 px-5 py-2.5 rounded-lg focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 w-full sm:w-auto font-medium text-center text-sm text-white focus:outline-none"
-                    >
-                        Iniciar sesión
-                    </button>
-
-                    <button
-                        onClick={onGoogleSignIn}
-                        type="submit"
-                        className="flex items-center gap-2 bg-blue-700 hover:bg-blue-800 dark:hover:bg-blue-700 dark:bg-blue-600 px-5 py-2.5 rounded-lg focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 w-full sm:w-auto font-medium text-center text-sm text-white focus:outline-none"
-                    >
-                        <FaGoogle style={{ background: 'none' }} />
-                        Google
-                    </button>
-                </div>
-            </form>
-        </>
+                <Button
+                    className="justify-center items-center gap-2 w-full"
+                    variant="outline"
+                    onClick={() => console.log('Google Sign In')}
+                >
+                    <AtSign className="text-lg" />
+                    <span>Sign in with Google</span>
+                </Button>
+            </CardFooter>
+        </Card>
     );
 }
 
