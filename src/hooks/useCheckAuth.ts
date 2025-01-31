@@ -10,20 +10,20 @@ export const useCheckAuth = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        onAuthStateChanged(FirebaseAuth, async (user) => {
+        onAuthStateChanged(FirebaseAuth, (user) => {
             try {
                 if (!user) {
                     dispatch(logout({ errorMessage: 'User not found' }));
-                    return;
+                } else {
+                    const { uid, email, displayName, photoURL } = user;
+                    dispatch(login({ uid, email, displayName, photoURL }));
                 }
-
-                const { uid, email, displayName, photoURL } = user;
-                dispatch(login({ uid, email, displayName, photoURL }));
             } catch (error) {
                 console.error('Error in useCheckAuth', error);
                 dispatch(logout({ errorMessage: 'An unknown error occurred.' }));
             }
         });
+        return () => {};
     }, [dispatch]);
 
     return { status };

@@ -4,8 +4,13 @@ import ProtectedRoute from './ProtectedRoute';
 import DepiFlowRouter from './DepiFlowRouter';
 import PublicRoute from './PublicRoute';
 import AuthPage from '@/pages/AuthPage';
+import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { LoadingSpinner } from '@/components/common/loadingSpinner';
 
 export const AppRouter = () => {
+    const { status } = useCheckAuth();
+
+    if (status === 'checking') return <LoadingSpinner />;
     return (
         <Routes>
             <Route
