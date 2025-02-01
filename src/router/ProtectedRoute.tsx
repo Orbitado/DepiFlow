@@ -16,10 +16,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
     return (
         <SidebarProvider>
             <AppSidebar />
-            <main>
-                <SidebarTrigger />
-                {children}
-            </main>
+            <SidebarTrigger />
+            <main className="mx-auto p-6 min-h-screen container">{children}</main>
         </SidebarProvider>
     );
 }

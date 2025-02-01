@@ -7,7 +7,7 @@ function DashboardPage() {
     const { onSignOut } = useAuth();
     return (
         <div className="flex flex-col">
-            <Button onClick={onSignOut} className="mt-6 w-0" type="submit">
+            <Button onClick={onSignOut} className="w-fit" type="submit">
                 <LogIn className="text-white" />
             </Button>
             DashboardPage
