@@ -20,9 +20,9 @@ export const checkingGoogleSignIn = () => {
         const result = await signInWithGoogle();
 
         if (result.ok) {
-            dispatch(login(result));
+            dispatch(login({ ...result, errorMessage: result.errorMessage || null }));
         } else {
-            dispatch(logout(result.errorMessage));
+            dispatch(logout(result.errorMessage || null));
         }
     };
 };
@@ -35,16 +35,12 @@ export const checkingEmailPasswordSignUp = (
     return async (dispatch: AppDispatch) => {
         dispatch(checkingCredentials());
 
-        const { ok, photoURL, uid, errorMessage } = await registerWithEmailAndPassword(
-            email,
-            password,
-            displayName
-        );
+        const result = await registerWithEmailAndPassword(email, password, displayName);
 
-        if (ok) {
-            dispatch(login({ ok, displayName, email, photoURL, uid, errorMessage }));
+        if (result.ok) {
+            dispatch(login({ ...result, errorMessage: result.errorMessage || null }));
         } else {
-            dispatch(logout({ ok, photoURL, uid, errorMessage }));
+            dispatch(logout(result.errorMessage || null));
         }
     };
 };
@@ -53,15 +49,12 @@ export const startLoginWithEmailAndPassword = (email: string, password: string) 
     return async (dispatch: AppDispatch) => {
         dispatch(checkingCredentials());
 
-        const { ok, photoURL, uid, displayName, errorMessage } = await loginWithEmailAndPassword(
-            email,
-            password
-        );
+        const result = await loginWithEmailAndPassword(email, password);
 
-        if (ok) {
-            dispatch(login({ ok, displayName, email, photoURL, uid, errorMessage }));
+        if (result.ok) {
+            dispatch(login({ ...result, errorMessage: result.errorMessage || null }));
         } else {
-            dispatch(logout({ ok, photoURL, uid, errorMessage }));
+            dispatch(logout(result.errorMessage || null));
         }
     };
 };
@@ -69,6 +62,6 @@ export const startLoginWithEmailAndPassword = (email: string, password: string) 
 export const startLogout = () => {
     return async (dispatch: AppDispatch) => {
         await logoutFirebase();
-        dispatch(logout({ errorMessage: null }));
+        dispatch(logout(null));
     };
 };
