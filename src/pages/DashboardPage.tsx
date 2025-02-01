@@ -1,3 +1,4 @@
+import ThemeToggle from '@/components/common/ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { LogIn } from 'lucide-react';
@@ -10,6 +11,7 @@ function DashboardPage() {
             <Button onClick={onSignOut} className="w-fit" type="submit">
                 <LogIn className="text-white" />
             </Button>
+            <ThemeToggle />
             DashboardPage
         </div>
     );

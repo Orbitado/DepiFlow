@@ -39,3 +39,15 @@ export interface AuthState {
     photoURL: string | null;
     errorMessage: string | null;
 }
+
+export type Theme = 'dark' | 'light' | 'system';
+
+export type ThemeProviderProps = {
+    children: React.ReactNode;
+    defaultTheme?: Theme;
+    storageKey?: string;
+};
+
+export type ThemeState = {
+    theme: Theme;
+};
