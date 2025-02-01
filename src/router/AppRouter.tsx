@@ -1,26 +1,35 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { DepiFlowRouter } from '@/DepiFlow/routes/DepiFlowRouter';
+import { Routes, Route } from 'react-router-dom';
 
-import { CheckingAuth } from '@/components/Auth/CheckingAuth';
-import { LoginPage } from '@/pages/Auth/LoginPage';
+import ProtectedRoute from './ProtectedRoute';
+import DepiFlowRouter from './DepiFlowRouter';
+import PublicRoute from './PublicRoute';
+import AuthPage from '@/pages/AuthPage';
 import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { LoadingSpinner } from '@/components/common/loadingSpinner';
 
 export const AppRouter = () => {
     const { status } = useCheckAuth();
 
-    if (status === 'checking') {
-        return <CheckingAuth />;
-    }
+    if (status === 'checking') return <LoadingSpinner />;
     return (
-        <>
-            <Routes>
-                {status === 'authenticated' ? (
-                    <Route path="/*" element={<DepiFlowRouter />} />
-                ) : (
-                    <Route path="/auth/login" element={<LoginPage />} />
-                )}
-                <Route path="/*" element={<Navigate to="/auth/login" />} />
-            </Routes>
-        </>
+        <Routes>
+            <Route
+                path="/auth/login"
+                element={
+                    <PublicRoute>
+                        <AuthPage />
+                    </PublicRoute>
+                }
+            />
+
+            <Route
+                path="/*"
+                element={
+                    <ProtectedRoute>
+                        <DepiFlowRouter />
+                    </ProtectedRoute>
+                }
+            />
+        </Routes>
     );
 };
