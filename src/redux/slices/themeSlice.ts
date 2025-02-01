@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Theme, ThemeProviderState } from '@/types';
+import { Theme, ThemeState } from '@/types';
 
-const initialState: ThemeProviderState = {
+const initialState: ThemeState = {
     theme: 'system',
-    setTheme: () => null,
 };
 
 export const themeSlice = createSlice({

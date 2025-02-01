@@ -48,7 +48,6 @@ export type ThemeProviderProps = {
     storageKey?: string;
 };
 
-export type ThemeProviderState = {
+export type ThemeState = {
     theme: Theme;
-    setTheme: (theme: Theme) => void;
 };
