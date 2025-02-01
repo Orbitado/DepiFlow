@@ -14,8 +14,11 @@
         "prepare": "husky"
     },
     "lint-staged": {
-        "*.{ts,tsx,js}": "npm run lint",
-        "*.{ts,tsx,js,json,md,css}": "npm run format"
+        "*.{js,jsx,ts,tsx}": [
+            "prettier --write",
+            "eslint --fix",
+            "git add"
+        ]
     },
     "engines": {
         "node": ">=20.15.0"
