@@ -1,12 +1,15 @@
-import { useCheckAuth } from '@/hooks/useCheckAuth';
-import React from 'react';
 import { Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store/store';
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
-    const { status } = useCheckAuth();
-    const isAuthenticated = status === 'authenticated';
+    const { status } = useSelector((state: RootState) => state.auth);
 
-    return <>{!isAuthenticated ? children : <Navigate to="/" />}</>;
+    if (status === 'authenticated') {
+        return <Navigate to="/dashboard" replace />;
+    }
+
+    return <>{children}</>;
 }
 
 export default PublicRoute;

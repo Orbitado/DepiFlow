@@ -1,11 +1,16 @@
-import { Navigate } from 'react-router-dom';
-import { useCheckAuth } from '@/hooks/useCheckAuth';
+import { Navigate, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store/store';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-    const { status } = useCheckAuth();
-    const isAuthenticated = status === 'authenticated';
+    const { status } = useSelector((state: RootState) => state.auth);
+    const location = useLocation();
 
-    return <>{isAuthenticated ? children : <Navigate to="/auth/login" />}</>;
+    if (status === 'not-authenticated') {
+        return <Navigate to="/auth/login" state={{ from: location }} replace />;
+    }
+
+    return <>{children}</>;
 }
 
 export default ProtectedRoute;

@@ -30,3 +30,12 @@ export interface SignInWithProps {
 }
 
 type FormInputType = z.infer<typeof userSchema>;
+
+export interface AuthState {
+    status: 'checking' | 'authenticated' | 'not-authenticated';
+    uid: string | null;
+    email: string | null;
+    displayName: string | null;
+    photoURL: string | null;
+    errorMessage: string | null;
+}
