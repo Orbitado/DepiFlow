@@ -1,6 +1,9 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store/store';
+import { SidebarProvider } from '@/components/ui/sidebar';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import AppSidebar from '@/components/layout/AppSideBar';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
     const { status } = useSelector((state: RootState) => state.auth);
@@ -10,7 +13,15 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
         return <Navigate to="/auth/login" state={{ from: location }} replace />;
     }
 
-    return <>{children}</>;
+    return (
+        <SidebarProvider>
+            <AppSidebar />
+            <main>
+                <SidebarTrigger />
+                {children}
+            </main>
+        </SidebarProvider>
+    );
 }
 
 export default ProtectedRoute;
