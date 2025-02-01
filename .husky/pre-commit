@@ -5,5 +5,26 @@ echo "🔍 Running formatting and style analysis before commit..."
 # Scripts
 npx lint-staged
 
+# Check for errors
+if [ $? -ne 0 ]; then
+    echo "❌ Formatting or style analysis failed. Please check your code and try again."
+    exit 1
+fi
+
+# Success message
+echo "✅ Formatting and style analysis passed. Your code is clean and shiny! 🚀"
+
+# # Run tests
+# npm run test
+
+# # Check for errors
+# if [ $? -ne 0 ]; then
+#     echo "❌ Tests failed. Please check your code and try again."
+#     exit 1
+# fi
+
+# # Success message
+# echo "✅ Tests passed. Your code is clean and shiny! 🚀"
+
 # End message
 echo "✅ All set. Your code is clean and shiny! 🚀"

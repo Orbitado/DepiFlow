@@ -1,12 +1,7 @@
-import { Flowbite } from 'flowbite-react';
 import { AppRouter } from './router/AppRouter';
 
 function App() {
-    return (
-        <Flowbite>
-            <AppRouter />
-        </Flowbite>
-    );
+    return <AppRouter />;
 }
 
 export default App;
