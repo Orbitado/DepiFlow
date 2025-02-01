@@ -4,8 +4,8 @@ import {
     registerWithEmailAndPassword,
     signInWithGoogle,
 } from '@/services/firebase/firebaseAuth';
-import { login, logout, checkingCredentials } from './slices/authSlice';
-import { AppDispatch } from './store';
+import { login, logout, checkingCredentials } from '../slices/authSlice';
+import { AppDispatch } from '../store';
 
 export const checkingAuthentication = () => {
     return async (dispatch: AppDispatch) => {

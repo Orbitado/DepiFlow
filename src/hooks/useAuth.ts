@@ -4,7 +4,7 @@ import {
     checkingGoogleSignIn,
     startLoginWithEmailAndPassword,
     startLogout,
-} from '@/redux/thunks';
+} from '@/redux/thunks/auth';
 import { AppDispatch } from '@/redux/store';
 import { useNavigate } from 'react-router-dom';
 import { useCheckAuth } from './useCheckAuth';
