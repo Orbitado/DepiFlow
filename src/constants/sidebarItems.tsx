@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox } from 'lucide-react';
+import { Calendar, Home, Settings } from 'lucide-react';
 
 export const items = [
     {
@@ -6,16 +6,24 @@ export const items = [
         url: '/dashboard',
         icon: Home,
     },
-
-    {
-        title: 'Inbox',
-        url: '/appointments',
-        icon: Inbox,
-    },
-
     {
         title: 'Clients',
         url: '/clients',
         icon: Calendar,
+    },
+    {
+        title: 'Appointments',
+        url: '/appointments',
+        icon: Calendar,
+    },
+    {
+        title: 'History',
+        url: '/history',
+        icon: Calendar,
+    },
+    {
+        title: 'Settings',
+        url: '/settings',
+        icon: Settings,
     },
 ];
