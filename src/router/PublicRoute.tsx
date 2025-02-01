@@ -1,6 +1,6 @@
 import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store/store';
+import { RootState } from '@/redux/store';
 
 function PublicRoute({ children }: { children: React.ReactNode }) {
     const { status } = useSelector((state: RootState) => state.auth);

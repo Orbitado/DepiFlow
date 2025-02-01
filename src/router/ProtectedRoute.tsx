@@ -1,6 +1,6 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { RootState } from '@/redux/store/store';
+import { RootState } from '@/redux/store';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import AppSidebar from '@/components/layout/AppSideBar';

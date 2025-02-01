@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FirebaseAuth } from '@/services/firebase/firebaseConfig';
 import { onAuthStateChanged } from 'firebase/auth';
 import { login, logout } from '@/redux/slices/authSlice';
-import { RootState } from '@/redux/store/store';
+import { RootState } from '@/redux/store';
 
 export const useCheckAuth = () => {
     const { status } = useSelector((state: RootState) => state.auth);

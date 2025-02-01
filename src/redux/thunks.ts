@@ -5,7 +5,7 @@ import {
     signInWithGoogle,
 } from '@/services/firebase/firebaseAuth';
 import { login, logout, checkingCredentials } from './slices/authSlice';
-import { AppDispatch } from './store/store';
+import { AppDispatch } from './store';
 
 export const checkingAuthentication = () => {
     return async (dispatch: AppDispatch) => {
